@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
-const UsersModel = require('./models/users');
-const PromotionsModel = require('./models/promotions');
-const ProgramsModel = require('./models/programs');
-const RssFeedsModel = require('./models/rssFeeds');
+const UsersModel = require('./src/models/users');
+const PromotionsModel = require('./src/models/promotions');
+const ProgramsModel = require('./src/models/programs');
+const RssFeedsModel = require('./src/models/rssfeeds');
 
-const sequelize = new Sequelize('zenika_academy', 'root', 'root', {
-  host: 'localhost',
+const sequelize = new Sequelize(process.env.MYSQL_ADDON_DB, process.env.MYSQL_ADDON_USER, process.env.MYSQL_ADDON_PASSWORD, {
+  host: process.env.MYSQL_ADDON_HOST,
   dialect: 'mysql',
   pool: {
     max: 10,

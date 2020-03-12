@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const promotions = require('./routes/promotions');
@@ -39,4 +40,14 @@ app.use((err, req, res) => {
   res.send(res.locals.message);
 });
 
-module.exports = app;
+/**
+ * Create HTTP server.
+ */
+const port = process.env.PORT || '4000';
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, () => console.log(`Server started on port ${port}`));
